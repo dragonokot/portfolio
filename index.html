@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexey Guzenko | Cyber Portfolio</title>
+  </head>
+  <body>
+    <!-- Background Tech Effects -->
+    <div class="bg-grid"></div>
+    <div class="energy-glow"></div>
+
+    <header>
+      <div class="container nav-content">
+        <button id="lang-toggle" class="btn-lang">RU</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="hero">
+        <div class="hero-content">
+          <h1 id="hero-name"></h1>
+          <p id="hero-title"></p>
+        </div>
+        <div class="hero-image">
+          <img src="/photo.jpg" alt="Alexey Guzenko" onerror="this.src='https://via.placeholder.com/380x380?text=AG'"/>
+        </div>
+      </section>
+
+      <section id="arsenal">
+        <h2 id="arsenal-title" class="section-title"></h2>
+        <div id="arsenal-grid" class="arsenal-grid"></div>
+      </section>
+
+      <section id="experience">
+        <h2 id="exp-title" class="section-title"></h2>
+        <div id="timeline"></div>
+      </section>
+
+      <section id="skills">
+        <h2 id="skills-title" class="section-title"></h2>
+        <div id="skills-grid" class="skills-grid"></div>
+      </section>
+
+      <section id="education">
+        <h2 id="edu-title" class="section-title"></h2>
+        <div id="edu-list"></div>
+      </section>
+
+      <section id="contact" class="glass-card">
+        <h2 id="contact-title"></h2>
+        <p><strong id="label-loc"></strong> <span id="val-loc"></span></p>
+        <p><strong id="label-email">Email:</strong> drag1ex@yandex.kz</p>
+        <p><strong id="label-phone">Phone:</strong> +7 (777) 675-84-53</p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
