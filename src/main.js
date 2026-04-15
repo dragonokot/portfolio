@@ -22,7 +22,6 @@ const elements = {
   contactTitle: getEl('contact-title'),
   labelLoc: getEl('label-loc'),
   valLoc: getEl('val-loc'),
-  downloadCv: getEl('download-cv'),
   langButtons: document.querySelectorAll('.btn-lang'),
   timeline: getEl('timeline'),
   skillsGrid: getEl('skills-grid'),
@@ -125,7 +124,6 @@ function render() {
   if (elements.skillsTitle) elements.skillsTitle.textContent = t.skills_title;
   if (elements.eduTitle) elements.eduTitle.textContent = t.education_title;
   if (elements.contactTitle) elements.contactTitle.textContent = t.contact_title;
-  if (elements.downloadCv) elements.downloadCv.textContent = t.download_cv;
   
   const labels = {
     ru: { loc: "Местоположение:" },
