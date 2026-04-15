@@ -25,9 +25,11 @@ const elements = {
   langButtons: document.querySelectorAll('.btn-lang'),
   timeline: getEl('timeline'),
   skillsGrid: getEl('skills-grid'),
-  eduList: getEl('edu-list')
+  eduList: getEl('edu-list'),
+  slides: document.querySelectorAll('.hero-slideshow img')
 };
 
+// --- Typewriter Effect ---
 function typeWriter(text, element, speed = 50) {
   if (typewriterTimeout) clearTimeout(typewriterTimeout);
   element.innerHTML = '';
@@ -45,6 +47,19 @@ function typeWriter(text, element, speed = 50) {
   type();
 }
 
+// --- Slideshow Logic ---
+let currentSlide = 0;
+function initSlideshow() {
+  if (elements.slides.length <= 1) return;
+  
+  setInterval(() => {
+    elements.slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % elements.slides.length;
+    elements.slides[currentSlide].classList.add('active');
+  }, 5000); // 5 seconds
+}
+
+// --- Rendering ---
 function render() {
   const t = translations[currentLang];
   if (!t) return;
@@ -141,4 +156,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 
+// --- Startup ---
+initSlideshow();
 render();
