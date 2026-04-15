@@ -6,7 +6,6 @@ let typewriterTimeout = null;
 
 const getEl = (id) => {
   const el = document.getElementById(id);
-  // if (!el) console.warn(`Element with ID "${id}" not found.`);
   return el;
 };
 
@@ -23,7 +22,7 @@ const elements = {
   contactTitle: getEl('contact-title'),
   labelLoc: getEl('label-loc'),
   valLoc: getEl('val-loc'),
-  langToggle: getEl('lang-toggle'),
+  langButtons: document.querySelectorAll('.btn-lang'),
   timeline: getEl('timeline'),
   skillsGrid: getEl('skills-grid'),
   eduList: getEl('edu-list')
@@ -40,7 +39,7 @@ function typeWriter(text, element, speed = 50) {
       i++;
       typewriterTimeout = setTimeout(type, speed);
     } else {
-      element.innerHTML = text; // remove cursor at the end
+      element.innerHTML = text;
     }
   }
   type();
@@ -49,6 +48,15 @@ function typeWriter(text, element, speed = 50) {
 function render() {
   const t = translations[currentLang];
   if (!t) return;
+
+  // Active Button Highlight
+  elements.langButtons.forEach(btn => {
+    if (btn.getAttribute('data-lang') === currentLang) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
 
   // Basic Text
   if (elements.name) typeWriter(t.name, elements.name, 100);
@@ -61,9 +69,14 @@ function render() {
   if (elements.eduTitle) elements.eduTitle.textContent = t.education_title;
   if (elements.contactTitle) elements.contactTitle.textContent = t.contact_title;
   
-  if (elements.labelLoc) elements.labelLoc.textContent = currentLang === 'en' ? "Location:" : "Местоположение:";
+  const labels = {
+    ru: { loc: "Местоположение:" },
+    en: { loc: "Location:" },
+    kz: { loc: "Орналасқан жері:" }
+  };
+
+  if (elements.labelLoc) elements.labelLoc.textContent = labels[currentLang].loc;
   if (elements.valLoc) elements.valLoc.textContent = t.location;
-  if (elements.langToggle) elements.langToggle.textContent = t.switch_lang;
 
   // Arsenal Grid
   if (elements.arsenalGrid) {
@@ -107,13 +120,16 @@ function render() {
   }
 }
 
-// Language Toggle
-if (elements.langToggle) {
-  elements.langToggle.addEventListener('click', () => {
-    currentLang = currentLang === 'ru' ? 'en' : 'ru';
-    render();
+// Language Selector Logic
+elements.langButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.getAttribute('data-lang');
+    if (lang !== currentLang) {
+      currentLang = lang;
+      render();
+    }
   });
-}
+});
 
 // Scroll Reveal Observer
 const observerOptions = { threshold: 0.1 };
