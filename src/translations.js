@@ -185,4 +185,3 @@ export const translations = {
     location: "Талдықорған, Қазақстан"
   }
 };
-};
