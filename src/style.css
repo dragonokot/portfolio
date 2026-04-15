@@ -285,10 +285,19 @@ section.visible {
   transition: var(--transition);
 }
 
+.tech-icon-card.hidden-feature {
+  cursor: pointer;
+}
+
 .tech-icon-card:hover {
   background: rgba(0, 242, 255, 0.05);
   border-color: var(--accent-primary);
   box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+}
+
+.tech-icon-card.hidden-feature:hover {
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+  transform: translateY(-5px);
 }
 
 .tech-icon-card svg {

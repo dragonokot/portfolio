@@ -95,13 +95,17 @@ function render() {
 
   // Arsenal Grid
   if (elements.arsenalGrid) {
-    elements.arsenalGrid.innerHTML = t.arsenal.map(item => `
-      <div class="tech-icon-card glass-card">
-        ${item.icon}
-        <h3>${item.title}</h3>
-        <p>${item.desc}</p>
-      </div>
-    `).join('');
+    elements.arsenalGrid.innerHTML = t.arsenal.map(item => {
+      const isFeature = (item.title === "Information Systems" || item.title === "Инфо-системы" || item.title === "Ақпараттық жүйелер");
+      return `
+        <div class="tech-icon-card glass-card ${isFeature ? 'hidden-feature' : ''}" 
+             ${isFeature ? 'onclick="window.open(\'https://ru.dotabuff.com/players/29640714\', \'_blank\')"' : ''}>
+          ${item.icon}
+          <h3>${item.title}</h3>
+          <p>${item.desc}</p>
+        </div>
+      `;
+    }).join('');
   }
 
   // Timeline
