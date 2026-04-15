@@ -315,6 +315,96 @@ section.visible {
   margin-bottom: 12px;
 }
 
+/* --- Custom Cyber Cursor --- */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none !important;
+  }
+  
+  a, button, .btn-lang {
+    cursor: none !important;
+  }
+
+  .cursor-follower {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: width 0.3s, height 0.3s, background 0.3s;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+    will-change: top, left;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent-primary);
+    will-change: top, left;
+  }
+
+  .cursor-follower.hover {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 242, 255, 0.1);
+    border-width: 2px;
+  }
+}
+
+@media (hover: none) {
+  .cursor-follower, .cursor-dot {
+    display: none;
+  }
+}
+
+/* --- Download Button --- */
+.btn-download {
+  display: inline-block;
+  padding: 15px 30px;
+  background: transparent;
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary) !important;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  position: relative;
+  transition: var(--transition);
+  box-shadow: var(--glow-shadow);
+  overflow: hidden;
+}
+
+.btn-download::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-download:hover::before {
+  left: 100%;
+}
+
+.btn-download:hover {
+  background: var(--accent-primary) !important;
+  color: var(--bg-color) !important;
+  box-shadow: 0 0 30px var(--accent-primary);
+}
+
 /* Timeline Tech style */
 .timeline-item {
   margin-bottom: 30px;

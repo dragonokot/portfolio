@@ -22,12 +22,54 @@ const elements = {
   contactTitle: getEl('contact-title'),
   labelLoc: getEl('label-loc'),
   valLoc: getEl('val-loc'),
+  downloadCv: getEl('download-cv'),
   langButtons: document.querySelectorAll('.btn-lang'),
   timeline: getEl('timeline'),
   skillsGrid: getEl('skills-grid'),
   eduList: getEl('edu-list'),
-  slides: document.querySelectorAll('.hero-slideshow img')
+  slides: document.querySelectorAll('.hero-slideshow img'),
+  cursorFollower: document.querySelector('.cursor-follower'),
+  cursorDot: document.querySelector('.cursor-dot')
 };
+
+// --- Custom Cyber Cursor ---
+function initCursor() {
+  if (!elements.cursorFollower || !elements.cursorDot) return;
+
+  let mouseX = 0, mouseY = 0;
+  let followerX = 0, followerY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Dot follows immediately
+    elements.cursorDot.style.left = mouseX + 'px';
+    elements.cursorDot.style.top = mouseY + 'px';
+  });
+
+  // Smooth follower with requestAnimationFrame
+  function animateFollower() {
+    const dx = mouseX - followerX;
+    const dy = mouseY - followerY;
+    
+    followerX += dx * 0.15;
+    followerY += dy * 0.15;
+    
+    elements.cursorFollower.style.left = followerX + 'px';
+    elements.cursorFollower.style.top = followerY + 'px';
+    
+    requestAnimationFrame(animateFollower);
+  }
+  animateFollower();
+
+  // Hover reactions
+  const interactiveElements = document.querySelectorAll('a, button, .btn-lang');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => elements.cursorFollower.classList.add('hover'));
+    el.addEventListener('mouseleave', () => elements.cursorFollower.classList.remove('hover'));
+  });
+}
 
 // --- Typewriter Effect ---
 function typeWriter(text, element, speed = 50) {
@@ -56,7 +98,7 @@ function initSlideshow() {
     elements.slides[currentSlide].classList.remove('active');
     currentSlide = (currentSlide + 1) % elements.slides.length;
     elements.slides[currentSlide].classList.add('active');
-  }, 5000); // 5 seconds
+  }, 5000);
 }
 
 // --- Rendering ---
@@ -83,6 +125,7 @@ function render() {
   if (elements.skillsTitle) elements.skillsTitle.textContent = t.skills_title;
   if (elements.eduTitle) elements.eduTitle.textContent = t.education_title;
   if (elements.contactTitle) elements.contactTitle.textContent = t.contact_title;
+  if (elements.downloadCv) elements.downloadCv.textContent = t.download_cv;
   
   const labels = {
     ru: { loc: "Местоположение:" },
@@ -157,5 +200,6 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 
 // --- Startup ---
+initCursor();
 initSlideshow();
 render();

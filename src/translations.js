@@ -63,6 +63,7 @@ export const translations = {
     skills_title: "Core Proficiencies",
     skills: ["Software Setup", "PC Setup & Repair", "Network Configuration", "PC Assembly", "Database Management", "Technical Maintenance"],
     contact_title: "Terminal Access",
+    download_cv: "DOWNLOAD CV",
     location: "Taldykorgan, Kazakhstan"
   },
   ru: {
@@ -121,6 +122,7 @@ export const translations = {
     skills_title: "Ключевые Навыки",
     skills: ["Настройка ПО", "Настройка ПК", "Ремонт ПК", "Настройка сетевых подключений", "Сборка ПК", "Работа с базами данных", "Техническое обслуживание"],
     contact_title: "Доступ к Контактам",
+    download_cv: "СКАЧАТЬ РЕЗЮМЕ",
     location: "Талдыкорган, Казахстан"
   },
   kz: {
@@ -179,6 +181,8 @@ export const translations = {
     skills_title: "Негізгі дағдылар",
     skills: ["Бағдарламалық жасақтаманы баптау", "ДК баптау және жөндеу", "Желілік қосылымдарды баптау", "ДК құрастыру", "Дерекқорлармен жұмыс", "Техникалық қызмет көрсету"],
     contact_title: "Байланыс мәліметтері",
+    download_cv: "ТҮЙІНДЕМЕНІ ЖҮКТЕУ",
     location: "Талдықорған, Қазақстан"
   }
+};
 };
