@@ -15,7 +15,7 @@ export const translations = {
       { title: "IT Infrastructure", desc: "Lead specialist in system & hardware maintenance.", icon: icons.server },
       { title: "Networking", desc: "VCS, network configuration, and communication systems.", icon: icons.network },
       { title: "Cyber Security", desc: "Ensuring data integrity and information protection.", icon: icons.security },
-      { title: "Hardware Engineering", desc: "Expert diagnostics and technical restoration.", icon: icons.hardware },
+      { title: "Hardware Knowledge", desc: "Expert diagnostics and technical restoration.", icon: icons.hardware },
       { title: "Information Systems", desc: "Automated banking software and DB management.", icon: icons.database }
     ],
     about_title: "About Me",
@@ -74,7 +74,7 @@ export const translations = {
       { title: "ИТ Инфраструктура", desc: "Ведущий специалист по сопровождению систем.", icon: icons.server },
       { title: "Сетевые Технологии", desc: "Настройка ВКС и систем передачи данных.", icon: icons.network },
       { title: "Кибербезопасность", desc: "Защита информации и контроль целостности данных.", icon: icons.security },
-      { title: "Инженерия Железа", desc: "Экспертная диагностика и ремонт оборудования.", icon: icons.hardware },
+      { title: "Знание комплектующих", desc: "Экспертная диагностика и ремонт оборудования.", icon: icons.hardware },
       { title: "Инфо-системы", desc: "Работа с АБС и базами данных.", icon: icons.database }
     ],
     about_title: "Обо мне",
