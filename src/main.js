@@ -26,49 +26,8 @@ const elements = {
   timeline: getEl('timeline'),
   skillsGrid: getEl('skills-grid'),
   eduList: getEl('edu-list'),
-  slides: document.querySelectorAll('.hero-slideshow img'),
-  cursorFollower: document.querySelector('.cursor-follower'),
-  cursorDot: document.querySelector('.cursor-dot')
+  slides: document.querySelectorAll('.hero-slideshow img')
 };
-
-// --- Custom Cyber Cursor ---
-function initCursor() {
-  if (!elements.cursorFollower || !elements.cursorDot) return;
-
-  let mouseX = 0, mouseY = 0;
-  let followerX = 0, followerY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Dot follows immediately
-    elements.cursorDot.style.left = mouseX + 'px';
-    elements.cursorDot.style.top = mouseY + 'px';
-  });
-
-  // Smooth follower with requestAnimationFrame
-  function animateFollower() {
-    const dx = mouseX - followerX;
-    const dy = mouseY - followerY;
-    
-    followerX += dx * 0.15;
-    followerY += dy * 0.15;
-    
-    elements.cursorFollower.style.left = followerX + 'px';
-    elements.cursorFollower.style.top = followerY + 'px';
-    
-    requestAnimationFrame(animateFollower);
-  }
-  animateFollower();
-
-  // Hover reactions
-  const interactiveElements = document.querySelectorAll('a, button, .btn-lang');
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => elements.cursorFollower.classList.add('hover'));
-    el.addEventListener('mouseleave', () => elements.cursorFollower.classList.remove('hover'));
-  });
-}
 
 // --- Typewriter Effect ---
 function typeWriter(text, element, speed = 50) {
@@ -198,6 +157,5 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 
 // --- Startup ---
-initCursor();
 initSlideshow();
 render();
